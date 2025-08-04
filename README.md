@@ -153,6 +153,6 @@ Ready to implement AI-Context Documentation in your project? Start with our [Qui
 
 **AI-Context Documentation Methodology** - Empowering AI assistants with complete project context.
 
-**Created by**: [Your Name]  
+**Created by**: Alan Martinez  
 **License**: MIT  
 **Version**: 1.0.0
