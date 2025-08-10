@@ -1,8 +1,22 @@
-# AI-Context Documentation Methodology
+# AI-Context Documentation Methodology V2
 
-## 🎯 **What is AI-Context Documentation?**
+## 🎯 **What is AI-Context Documentation V2?**
 
-**AI-Context Documentation** is a methodology for creating comprehensive, AI-assistant-friendly documentation that serves as the single source of truth for any software project. Unlike traditional documentation written primarily for humans, this methodology is designed to provide AI assistants with complete context about your project's architecture, current state, and development patterns.
+**AI-Context Documentation V2** is an enhanced methodology for creating comprehensive, cost-controlled, AI-assistant-friendly documentation that serves as the single source of truth for any software project. Unlike traditional documentation written primarily for humans, this methodology is designed to provide AI assistants with complete context about your project's architecture, current state, and development patterns while maintaining strict cost controls and quality assurance.
+
+## 🚀 **V2 Enhancements**
+
+### **Cost Control & Scalability**
+- **Project Size Assessment**: Automatic sizing and approach selection
+- **Multi-Pass Workflows**: Scalable approaches for projects of all sizes  
+- **Token Budget Management**: Strict budget controls and optimization strategies
+- **Delta Updates**: Efficient incremental updates instead of full regeneration
+
+### **Quality Assurance**
+- **Anti-Hallucination**: Facts/Assumptions/Decisions format with mandatory citations
+- **Single Quote Enforcement**: Consistent formatting rules [[memory:5653285]]
+- **Validation Scripts**: Automated quality checking with V2 standards
+- **Audit Trails**: Complete journal system for session tracking and continuity
 
 ## 🚀 **Why AI-Context Documentation?**
 

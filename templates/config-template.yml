@@ -1,0 +1,292 @@
+# AI-Context Documentation V2 Configuration
+# This file controls how documentation is generated and maintained
+
+## 📋 **Project Information**
+project_name: "MyProject"
+project_type: "web-app"  # Options: web-app, api-service, library, cli-tool, mobile-app, desktop-app
+size_category: "medium"  # Options: new, small, medium, large
+description: "Brief project description"
+version: "1.0.0"
+last_updated: "2024-01-15T10:30:00Z"
+
+## 💰 **Budget Settings**
+budget:
+  # Token budget for documentation generation
+  token_budget: "medium"  # Options: low (<10K), medium (10K-50K), high (50K+)
+  
+  # Time budget for documentation session
+  time_budget: "4h"  # Format: Xh (hours) or Xm (minutes)
+  
+  # Example policy for code blocks
+  example_policy: "short"  # Options: link-only, short (<10 lines), full
+  
+  # Maximum tokens per individual document
+  max_tokens_per_doc: 2000
+  
+  # Maximum files to process per pass (for large projects)
+  max_files_per_pass: 100
+
+## 🎯 **Priority Settings**
+priorities:
+  # Main focus area for documentation
+  focus: "all"  # Options: architecture, implementation, operations, all
+  
+  # High priority paths (processed first)
+  priority_paths:
+    - "src/"
+    - "lib/"
+    - "api/"
+    - "components/"
+    - "models/"
+    - "routes/"
+    - "services/"
+  
+  # Medium priority paths (processed if budget allows)
+  medium_priority_paths:
+    - "utils/"
+    - "helpers/"
+    - "middleware/"
+    - "config/"
+  
+  # Paths to exclude from analysis
+  exclude_paths:
+    - "node_modules/"
+    - "build/"
+    - "dist/"
+    - "coverage/"
+    - ".git/"
+    - "tests/"
+    - "__pycache__/"
+    - "vendor/"
+
+## 📊 **Quality Settings**
+quality:
+  # Minimum completeness percentage for core areas
+  min_completeness: 80  # 0-100
+  
+  # Require citations for all claims
+  require_citations: true
+  
+  # Use Facts/Assumptions/Decisions format
+  use_fad_format: true
+  
+  # Maximum assumptions per document
+  max_assumptions_per_doc: 5
+  
+  # Validation level
+  validation_level: "strict"  # Options: basic, standard, strict
+
+## 🔄 **Update Settings**
+updates:
+  # Strategy for handling updates
+  update_strategy: "delta"  # Options: full, delta, selective
+  
+  # Git reference for delta updates (branch, tag, or commit hash)
+  delta_since: "main"
+  
+  # Automatic update triggers
+  auto_update_triggers:
+    - "package.json"
+    - "src/models/"
+    - "src/routes/"
+    - "src/components/"
+    - "api/"
+    - "config/"
+  
+  # Update frequency
+  update_frequency: "weekly"  # Options: daily, weekly, monthly, manual
+
+## 📝 **Documentation Structure**
+structure:
+  # Required documents (always generated)
+  required_docs:
+    - "INDEX.md"
+    - "architecture-overview.md"
+    - "data-models.md"
+  
+  # Optional documents (generated based on project analysis)
+  optional_docs:
+    - "components.md"
+    - "api-documentation.md"
+    - "deployment-guide.md"
+    - "development-workflow.md"
+    - "known-issues.md"
+    - "performance-guide.md"
+    - "security-guide.md"
+    - "roadmap.md"
+  
+  # Custom document templates
+  custom_templates: []
+
+## 🔧 **Advanced Settings**
+advanced:
+  # Multi-pass configuration (for large projects)
+  multi_pass:
+    enabled: false
+    passes:
+      - name: "inventory"
+        token_budget: 5000
+        description: "File tree and technology analysis"
+      - name: "prioritization"  
+        token_budget: 8000
+        description: "Component prioritization and selection"
+      - name: "extraction"
+        token_budget: 30000
+        description: "Interface and signature extraction"
+      - name: "synthesis"
+        token_budget: 12000
+        description: "Documentation generation and cross-referencing"
+  
+  # Caching settings
+  caching:
+    enabled: true
+    cache_signatures: true
+    cache_interfaces: true
+    cache_duration: "7d"  # 7 days
+  
+  # Parallel processing
+  parallel_processing:
+    enabled: false
+    max_concurrent_files: 5
+  
+  # Emergency stops
+  emergency_stops:
+    max_session_duration: "2h"
+    max_total_tokens: 100000
+    max_errors: 10
+
+## 📈 **Monitoring and Alerts**
+monitoring:
+  # Budget monitoring
+  budget_alerts:
+    warning_threshold: 0.8   # 80% of budget used
+    critical_threshold: 0.95 # 95% of budget used
+  
+  # Quality monitoring
+  quality_alerts:
+    min_citation_rate: 0.9   # 90% of claims must be cited
+    max_assumption_rate: 0.1 # Max 10% assumptions per document
+  
+  # Progress tracking
+  progress_tracking:
+    enabled: true
+    granularity: "per_document"  # Options: per_document, per_pass, per_session
+  
+  # Logging level
+  log_level: "info"  # Options: debug, info, warn, error
+
+## 🎨 **Output Formatting**
+formatting:
+  # Markdown style preferences
+  markdown_style:
+    use_single_quotes: true   # Always use single quotes in code examples
+    max_line_length: 100
+    heading_style: "atx"      # Use # style headings
+    code_fence_style: "backticks"
+  
+  # File naming conventions
+  file_naming:
+    use_kebab_case: true      # file-name.md instead of fileName.md
+    include_timestamps: false
+  
+  # Cross-reference style
+  cross_references:
+    style: "relative"         # Options: relative, absolute
+    include_line_numbers: true
+
+## 🔐 **Security and Compliance**
+security:
+  # Exclude sensitive information
+  exclude_sensitive: true
+  
+  # Sensitive patterns to exclude
+  sensitive_patterns:
+    - "password"
+    - "secret"
+    - "key"
+    - "token"
+    - "api_key"
+    - "private_key"
+  
+  # Compliance requirements
+  compliance:
+    gdpr: false
+    hipaa: false
+    sox: false
+
+## 🌍 **Team and Collaboration**
+team:
+  # Team size (affects documentation scope)
+  size: 5  # Number of developers
+  
+  # Experience level (affects documentation depth)
+  experience_level: "mixed"  # Options: junior, mixed, senior
+  
+  # Collaboration tools
+  tools:
+    version_control: "git"
+    issue_tracker: "github"    # Options: github, jira, linear, etc.
+    documentation_platform: "markdown"  # Options: markdown, confluence, notion
+  
+  # Review process
+  review_process:
+    enabled: true
+    reviewers: []  # List of reviewer usernames/emails
+    approval_required: false
+
+## 📊 **Analytics and Metrics**
+analytics:
+  # Track documentation usage
+  track_usage: false
+  
+  # Collect feedback
+  collect_feedback: true
+  
+  # Performance metrics
+  performance_metrics:
+    enabled: true
+    track_generation_time: true
+    track_token_usage: true
+    track_quality_scores: true
+
+## 🎯 **Project-Specific Overrides**
+# These settings override defaults for specific project types
+
+web_app_overrides:
+  required_docs:
+    - "components.md"
+    - "api-documentation.md"
+  priority_paths:
+    - "src/components/"
+    - "src/pages/"
+    - "src/api/"
+
+api_service_overrides:
+  required_docs:
+    - "api-documentation.md"
+    - "data-models.md"
+  priority_paths:
+    - "routes/"
+    - "models/"
+    - "middleware/"
+
+library_overrides:
+  required_docs:
+    - "api-documentation.md"
+  focus: "implementation"
+  example_policy: "full"
+
+cli_tool_overrides:
+  required_docs:
+    - "development-workflow.md"
+  priority_paths:
+    - "commands/"
+    - "cli/"
+
+## 🔄 **Version History**
+# Track configuration changes
+version_history:
+  - version: "1.0.0"
+    date: "2024-01-15"
+    changes: "Initial configuration"
+    author: "developer@example.com"

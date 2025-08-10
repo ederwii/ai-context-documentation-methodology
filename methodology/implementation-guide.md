@@ -1,62 +1,295 @@
-# Implementation Guide
+# AI-Context Documentation V2 Implementation Guide
 
-## 🎯 **AI-Context Documentation Implementation Guide**
+## 🎯 **AI-Context Documentation V2 Implementation Guide**
 
-This guide provides a step-by-step process for implementing AI-Context Documentation in any software project. Follow these steps to create comprehensive, AI-assistant-friendly documentation that serves as your project's single source of truth.
+This guide provides a step-by-step process for implementing AI-Context Documentation V2 in any software project using cost-controlled, multi-pass approaches. Follow these steps to create comprehensive, AI-assistant-friendly documentation that serves as your project's single source of truth.
 
 ## 📋 **Implementation Overview**
 
-### **Timeline**
-- **Phase 1**: Foundation Setup (30-60 minutes)
-- **Phase 2**: Documentation Creation (2-4 hours)
-- **Phase 3**: Integration & Maintenance (Ongoing)
+### **V2 Enhancements**
+- **Project Size Assessment**: Automatic sizing and approach selection
+- **Cost Control**: Token budgets and optimization strategies
+- **Multi-Pass Workflows**: Scalable approaches for projects of all sizes
+- **Anti-Hallucination**: Facts/Assumptions/Decisions format with citations
+- **Audit Trails**: Journal system for continuity and maintenance
+
+### **Timeline by Project Size**
+- **New Projects**: 1-2 hours (planning-focused)
+- **Small Projects**: 2-3 hours (single-pass analysis)
+- **Medium Projects**: 4-6 hours (two-pass selective analysis)
+- **Large Projects**: 1-2 days (four-pass pipeline)
 
 ### **Prerequisites**
 - Access to your project codebase
 - An AI assistant (Claude, GPT, etc.)
+- Token budget planning (see cost-control.md)
 - Basic understanding of your project architecture
 
-## 🚀 **Phase 1: Foundation Setup**
+## 🚀 **Phase 1: Project Assessment and Setup**
 
-### **Step 1: Choose Your Implementation Approach**
+### **Step 1: Project Size Assessment**
 
-#### **Option A: AI-Assisted Implementation (Recommended)**
-1. Copy the [AI-Context Documentation Prompt](../tools/prompts/ai-context-documentation-prompt.md)
+Before starting documentation, assess your project size to choose the optimal approach:
+
+#### **Option A: Use Project Sizer (Recommended)**
+1. Copy the [Project Sizer Prompt](../tools/prompts/project-sizer.md)
 2. Paste it into your AI assistant conversation
-3. Provide your project context and codebase
-4. Follow the AI's discovery questions
-5. Review and customize the generated documentation
+3. Provide basic project information (repository, file count, etc.)
+4. Receive size classification and approach recommendation
+5. Get tailored budget and workflow suggestions
 
-#### **Option B: Manual Implementation**
-1. Use the [template structure](../templates/cursor-docs-template/)
-2. Create each document manually
-3. Follow the core principles and standards
-4. Validate against the quality checklist
+#### **Option B: Manual Assessment**
+Use these criteria to classify your project:
+- **New Project**: < 10 files, planning phase
+- **Small Project**: < 50 files, < 10K LOC, 1-3 developers
+- **Medium Project**: 50-500 files, 10K-100K LOC, 3-10 developers  
+- **Large Project**: 500+ files, 100K+ LOC, 10+ developers
 
-### **Step 2: Prepare Your Project Context**
+### **Step 2: Budget Planning**
 
-Gather the following information for your AI assistant:
+Based on your project size, plan your token budget:
 
-#### **Project Overview**
-- Project name and purpose
-- Technology stack (languages, frameworks, databases)
-- Architecture patterns (monolith, microservices, etc.)
-- Current development stage
+```markdown
+## Budget Recommendations:
 
-#### **Codebase Information**
-- Repository structure
-- Key components and their locations
-- API endpoints (if applicable)
-- Data models and schemas
-- Configuration files
+### New/Small Projects:
+- Token Budget: Low-Medium (5K-20K tokens)
+- Time Investment: 1-3 hours
+- Focus: Essential documentation
 
-#### **Existing Documentation**
-- Current README files
-- API documentation
-- Architecture diagrams
-- Development guides
+### Medium Projects:
+- Token Budget: Medium (20K-40K tokens)  
+- Time Investment: 4-6 hours
+- Focus: Priority components
 
-### **Step 3: Set Up Documentation Structure**
+### Large Projects:
+- Token Budget: Medium-High (35K-75K tokens)
+- Time Investment: 1-2 days
+- Focus: Subsystem analysis
+```
+
+### **Step 3: Configuration Setup**
+
+Create your project configuration:
+
+1. Copy the [Config Template](../templates/config-template.yml)
+2. Customize settings based on your project assessment
+3. Set budget limits and priorities
+4. Configure update triggers and maintenance rules
+
+## 🔍 **Phase 2: Size-Specific Documentation Workflows**
+
+### **NEW PROJECT Workflow (Planning Phase)**
+
+For projects in conceptual/planning phase:
+
+#### **Process:**
+1. **Requirements Analysis** (2K tokens)
+   - Gather project requirements and goals
+   - Identify key stakeholders and use cases
+   - Document technology decisions and constraints
+
+2. **Architecture Planning** (4K tokens)
+   - Design system architecture and components
+   - Plan data models and interfaces
+   - Document integration points and dependencies
+
+3. **Implementation Roadmap** (3K tokens)
+   - Create development phases and milestones
+   - Identify risks and mitigation strategies
+   - Plan team structure and responsibilities
+
+#### **Deliverables:**
+- `INDEX.md` - Navigation and project overview
+- `architecture-overview.md` - Planned system design
+- `data-models.md` - Planned interfaces and schemas
+- `roadmap.md` - Implementation timeline and milestones
+- `journal.md` - Decision log and assumptions
+
+### **SMALL PROJECT Workflow (< 50 files)**
+
+For small, straightforward projects:
+
+#### **Process:**
+1. **Complete Analysis** (8K tokens)
+   - Analyze all project files and structure
+   - Identify components and relationships
+   - Document current implementation patterns
+
+2. **Essential Documentation** (6K tokens)
+   - Create core architecture documentation
+   - Document key components and workflows
+   - Generate API documentation if applicable
+
+3. **Maintenance Setup** (2K tokens)
+   - Configure update triggers
+   - Create maintenance procedures
+   - Set up quality validation
+
+#### **Deliverables:**
+- All core documents (INDEX, architecture, data-models)
+- Component or API documentation as needed
+- Development workflow documentation
+- Simple maintenance procedures
+
+### **MEDIUM PROJECT Workflow (50-500 files)**
+
+For moderately complex projects:
+
+#### **Pass 1 - Overview Analysis** (12K tokens)
+1. **File Tree Analysis** (4K tokens)
+   - Map project structure and organization
+   - Identify technology stack and dependencies
+   - Categorize components by importance
+
+2. **Architecture Identification** (4K tokens)
+   - Understand system design patterns
+   - Map data flow and component relationships
+   - Identify integration points and boundaries
+
+3. **Priority Selection** (4K tokens)
+   - Select high-priority components for detailed analysis
+   - Allocate remaining budget across priority areas
+   - Document deferred items and rationale
+
+#### **Pass 2 - Detailed Analysis** (20K tokens)
+1. **Priority Component Documentation** (12K tokens)
+   - Deep dive into selected components
+   - Document interfaces and implementations
+   - Create detailed component relationships
+
+2. **API Documentation** (4K tokens)
+   - Document all API endpoints and contracts
+   - Include authentication and error handling
+   - Add request/response examples (link-only)
+
+3. **Integration Documentation** (4K tokens)
+   - Document external service integrations
+   - Map deployment and infrastructure requirements
+   - Create troubleshooting guides
+
+#### **Deliverables:**
+- Comprehensive core documentation
+- Detailed priority component documentation
+- Complete API documentation
+- Integration and deployment guides
+
+### **LARGE PROJECT Workflow (500+ files)**
+
+For complex, enterprise-scale projects:
+
+#### **Pass 1 - Inventory** (8K tokens)
+1. **File System Analysis**
+   - Generate complete file tree with sizes and dates
+   - Identify technology stack and frameworks
+   - Map directory structure and organization
+   - **No file content analysis** (budget preservation)
+
+2. **Technology Stack Mapping**
+   - Identify all languages, frameworks, and tools
+   - Map configuration files and settings
+   - Document build and deployment systems
+
+#### **Pass 2 - Prioritization** (10K tokens)
+1. **Subsystem Identification**
+   - Identify major subsystems and boundaries
+   - Map business domains and responsibilities
+   - Analyze component dependencies
+
+2. **Priority Ranking**
+   - Rank subsystems by business value and complexity
+   - Allocate budget across priority areas
+   - Document selection criteria and rationale
+
+3. **Budget Allocation**
+   - Distribute remaining tokens across subsystems
+   - Plan extraction and synthesis phases
+   - Set up deferred item tracking
+
+#### **Pass 3 - Extraction** (35K tokens)
+1. **Interface Extraction** (20K tokens)
+   - Extract function signatures and type definitions
+   - Document API contracts and schemas
+   - Map component interfaces and dependencies
+   - **Avoid implementation details** (budget control)
+
+2. **Configuration Analysis** (8K tokens)
+   - Analyze configuration files and settings
+   - Document environment variables and secrets
+   - Map deployment and infrastructure requirements
+
+3. **Integration Mapping** (7K tokens)
+   - Document external service integrations
+   - Map data flow between subsystems
+   - Identify critical integration points
+
+#### **Pass 4 - Synthesis** (15K tokens)
+1. **Documentation Generation** (10K tokens)
+   - Generate subsystem documentation
+   - Create architecture overview and data flow
+   - Document priority components and interfaces
+
+2. **Cross-Reference Creation** (3K tokens)
+   - Link related components and subsystems
+   - Create navigation and index structures
+   - Map dependencies and relationships
+
+3. **Gap Documentation** (2K tokens)
+   - Document deferred items and rationale
+   - Create follow-up priorities for future sessions
+   - Generate budget utilization report
+
+#### **Deliverables:**
+- Subsystem-focused architecture documentation
+- Interface and contract documentation
+- Priority component details
+- Comprehensive deferred item tracking
+- Budget utilization and next-step recommendations
+
+## 📝 **Phase 3: Documentation Execution**
+
+### **Step 1: Execute Your Chosen Workflow**
+
+Based on your project assessment, use the appropriate V2 prompt:
+
+#### **For All Project Sizes:**
+1. Copy the [AI-Context Documentation V2 Prompt](../tools/prompts/ai-context-documentation-v2-prompt.md)
+2. Paste it into your AI assistant conversation
+3. Provide your project configuration and context
+4. Follow the size-specific workflow recommendations
+5. Monitor token usage and adjust scope as needed
+
+#### **Key V2 Execution Principles:**
+- **Always use single quotes** in all shell commands and examples [[memory:5653285]]
+- **Cite every claim** with file paths or mark as 'unknown'
+- **Use Facts/Assumptions/Decisions format** in all documents
+- **Track token usage** and defer items when approaching budget limits
+- **Document everything** in the project journal
+
+### **Step 2: Quality Validation**
+
+After documentation generation, validate quality:
+
+#### **Content Validation Checklist:**
+- [ ] All major components documented with file paths
+- [ ] All claims include citations or 'unknown' markers  
+- [ ] Facts/Assumptions/Decisions blocks in every document
+- [ ] No unsupported claims about implementation
+- [ ] All code references include exact file paths
+
+#### **Budget Validation Checklist:**
+- [ ] Token budget respected throughout process
+- [ ] Example policy consistently applied
+- [ ] Deferred items clearly marked with TODO
+- [ ] Budget utilization documented in journal
+
+#### **Format Validation Checklist:**
+- [ ] Single quotes used in all shell commands [[memory:5653285]]
+- [ ] Consistent markdown formatting
+- [ ] Proper cross-references between documents
+- [ ] Clear navigation structure in INDEX.md
+
+### **Step 3: Setup Documentation Structure**
 
 Create the `cursor-docs/` folder in your project root:
 
@@ -65,9 +298,127 @@ mkdir cursor-docs
 cd cursor-docs
 ```
 
-## 📝 **Phase 2: Documentation Creation**
+Your final structure should include:
 
-### **Step 1: Create Foundation Documents**
+```
+cursor-docs/
+├── config.yml                  # Project configuration
+├── journal.md                  # Audit trail and session log
+├── INDEX.md                    # Navigation hub
+├── architecture-overview.md    # System design
+├── data-models.md             # Interfaces and schemas
+├── [additional docs based on project size]
+└── [deferred items tracking]
+```
+
+## 🔄 **Phase 4: Maintenance and Updates**
+
+### **Step 1: Setup Maintenance Procedures**
+
+#### **Journal Maintenance:**
+1. Copy the [Journal Template](../templates/journal-template.md) to `cursor-docs/journal.md`
+2. Create initial journal entry documenting the setup process
+3. Include session goals, token usage, and decisions made
+4. Set up regular journal review schedule
+
+#### **Configuration Maintenance:**
+1. Review and update `config.yml` based on actual usage
+2. Adjust token budgets based on session results
+3. Update priority paths based on development patterns
+4. Configure automated update triggers
+
+### **Step 2: Delta Update Strategy**
+
+For ongoing maintenance, use delta updates instead of full regeneration:
+
+#### **Git-Based Delta Detection:**
+```bash
+# Identify changed files since last documentation update
+git diff --name-only HEAD~1 HEAD
+
+# Focus updates on changed areas only
+git log --since='1 week ago' --name-only --pretty=format: | sort | uniq
+```
+
+#### **Smart Update Triggers:**
+Configure automatic documentation updates when specific files change:
+- `src/models/*.js` → Update `data-models.md`
+- `src/routes/*.js` → Update `api-documentation.md`
+- `src/components/*.js` → Update `components.md`
+- `package.json` → Update `architecture-overview.md`
+
+### **Step 3: Quality Monitoring**
+
+#### **Monthly Documentation Review:**
+1. Review journal entries for patterns and improvements
+2. Analyze token usage and optimization opportunities
+3. Update deferred items and plan next priorities
+4. Gather team feedback on documentation effectiveness
+
+#### **Quarterly Process Review:**
+1. Assess documentation impact on team productivity
+2. Review and update methodology based on lessons learned
+3. Plan process improvements and tool integrations
+4. Update configuration and templates based on experience
+
+## 💡 **V2 Best Practices**
+
+### **Cost Optimization:**
+- Start with project sizing to choose appropriate workflow
+- Use link-only examples by default, code blocks on request
+- Implement delta updates for ongoing maintenance
+- Track token usage and adjust scope dynamically
+
+### **Quality Assurance:**
+- Always cite claims with file paths or mark as 'unknown'
+- Use Facts/Assumptions/Decisions format consistently
+- Validate all code references and cross-links
+- Document assumptions explicitly and review regularly
+
+### **Team Integration:**
+- Include documentation updates in code review process
+- Use journal entries for team knowledge sharing
+- Link GitHub issues to relevant documentation sections
+- Train team on maintenance procedures and update triggers
+
+### **Continuous Improvement:**
+- Monitor documentation usage and effectiveness
+- Gather feedback from AI assistants and team members
+- Update processes based on real-world usage patterns
+- Share lessons learned with the AI-Context Documentation community
+
+## 🎯 **Success Metrics**
+
+### **Immediate Benefits (Week 1-2):**
+- AI assistants provide project-specific suggestions
+- Reduced time explaining project context (target: 90% reduction)
+- Faster onboarding for new team members
+- Better code reviews with full context
+
+### **Medium-term Benefits (Month 1-3):**
+- Improved development velocity (target: 20-30% improvement)
+- Reduced documentation debt
+- Better project knowledge preservation
+- Enhanced team collaboration
+
+### **Long-term Benefits (Month 3+):**
+- Sustainable documentation practices
+- Reduced maintenance overhead
+- Improved code quality and consistency
+- Better project maintainability
+
+## 🚀 **Next Steps**
+
+After successful implementation:
+
+1. **Share Your Experience**: Contribute examples and lessons learned to the community
+2. **Optimize Further**: Fine-tune processes based on your specific needs
+3. **Scale Up**: Apply methodology to other projects in your organization
+4. **Contribute Back**: Help improve the methodology with your insights
+
+---
+
+**You now have a complete V2 implementation with cost controls, quality assurance, and sustainable maintenance procedures!** 🎉
 
 #### **1.1 INDEX.md - Documentation Hub**
 - Create the main navigation document
